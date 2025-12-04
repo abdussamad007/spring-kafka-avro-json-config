@@ -1,0 +1,18 @@
+{
+  "bootstrapServers": "localhost:9092",
+  "producer": {
+    "acks": "all",
+    "retries": 3,
+    "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
+    "valueSerializer": "org.apache.avro.specific.SpecificAvroSerializer"
+  },
+  "consumer": {
+    "groupId": "user-consumer-group",
+    "autoOffsetReset": "earliest",
+    "keyDeserializer": "org.apache.kafka.common.serialization.StringDeserializer",
+    "valueDeserializer": "org.apache.avro.specific.SpecificAvroDeserializer"
+  },
+  "topics": {
+    "userTopic": "test_topic"
+  }
+}

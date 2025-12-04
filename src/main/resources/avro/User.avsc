@@ -1,0 +1,10 @@
+{
+  "namespace": "com.example.abdus.kafka.model",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {"name": "id", "type": "int"},
+    {"name": "name", "type": "string"},
+    {"name": "email", "type": "string"}
+  ]
+}
