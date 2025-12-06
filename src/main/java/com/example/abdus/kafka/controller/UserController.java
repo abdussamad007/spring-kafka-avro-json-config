@@ -1,22 +1,21 @@
 package com.example.abdus.kafka.controller;
 
 import com.example.abdus.kafka.model.User;
-import com.example.abdus.kafka.producer.UserProducer;
+import com.example.abdus.kafka.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserProducer producer;
+    private final UserService userService;
 
-    public UserController(UserProducer producer) {
-        this.producer = producer;
+    @PostMapping("/send")
+    public String sendUser(@RequestBody User user) {
+        userService.publishUser(user);
+        return "User message sent successfully";
     }
 
-    @PostMapping
-    public String send(@RequestBody User user) {
-        producer.send(user);
-        return "User sent!";
-    }
 }

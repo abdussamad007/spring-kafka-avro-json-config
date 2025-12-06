@@ -1,17 +1,22 @@
 {
   "bootstrapServers": "localhost:9092",
+  "schemaRegistryUrl": "http://localhost:8081",
+
   "producer": {
     "acks": "all",
     "retries": 3,
     "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
-    "valueSerializer": "org.apache.avro.specific.SpecificAvroSerializer"
+    "valueSerializer": "io.confluent.kafka.serializers.KafkaAvroSerializer"
   },
+
   "consumer": {
     "groupId": "user-consumer-group",
     "autoOffsetReset": "earliest",
     "keyDeserializer": "org.apache.kafka.common.serialization.StringDeserializer",
-    "valueDeserializer": "org.apache.avro.specific.SpecificAvroDeserializer"
+    "valueDeserializer": "io.confluent.kafka.serializers.KafkaAvroDeserializer",
+    "specificAvroReader": true
   },
+
   "topics": {
     "userTopic": "test_topic"
   }

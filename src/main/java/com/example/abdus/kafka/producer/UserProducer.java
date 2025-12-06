@@ -1,24 +1,26 @@
 package com.example.abdus.kafka.producer;
 
+
+import com.example.abdus.kafka.config.KafkaProperties;
 import com.example.abdus.kafka.model.User;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class UserProducer {
 
     private final KafkaTemplate<String, User> kafkaTemplate;
-    private final String topic;
+    private final KafkaProperties config;
 
-    public UserProducer(KafkaTemplate<String, User> kafkaTemplate, Map<String, Object> kafkaConfig) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.topic = ((Map<String, String>) kafkaConfig.get("topics")).get("userTopic");
-    }
+    public void sendUser(User user) {
+        String topic = config.getTopics().get("userTopic");
 
-    public void send(User user) {
         kafkaTemplate.send(topic, user);
-        System.out.println("Produced User: " + user);
+        log.info("Sent User to topic {} : {}", topic, user);
     }
 }
