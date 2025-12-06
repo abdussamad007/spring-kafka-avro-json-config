@@ -23,3 +23,5 @@ docker run -d \
   -e SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081 \
   -e SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=localhost:9092 \
   confluentinc/cp-schema-registry:latest
+------------
+docker pull confluentinc/cp-schema-registry:7.5.7
