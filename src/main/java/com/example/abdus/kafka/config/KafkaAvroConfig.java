@@ -1,6 +1,6 @@
 package com.example.abdus.kafka.config;
 
-import com.example.abdus.kafka.model.User; // Assuming 'User' is your Avro-generated class
+import com.example.abdus.kafka.model.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;
